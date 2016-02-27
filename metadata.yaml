@@ -1,0 +1,6 @@
+name: "auto-generated-pkg-fa29713c-b456-4582-a2cb-c0c7631c049e"
+productVersion: "7.0.0-SNAPSHOT"
+data:
+- locator: "software-component/Software.WindowsEPOAgent.yaml"
+  name: "Windows EPO Agent "
+exportTime: "2016-02-24T15:31:57.175Z"

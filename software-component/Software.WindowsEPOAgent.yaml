@@ -1,0 +1,260 @@
+'@type': "SoftwareComponentType"
+createdDate: "2016-02-17T04:28:09.219Z"
+lastUpdated: "2016-02-17T14:50:50.142Z"
+id: "Software.WindowsEPOAgent"
+name: "Windows EPO Agent "
+publishStatus: "PUBLISHED"
+publishStatusName: "Published"
+schema:
+  fields:
+  - id: "securePort"
+    label: "securePort"
+    description: "Default is 443"
+    dataType:
+      type: "primitive"
+      typeId: "STRING"
+    state:
+      dependencies: []
+      facets:
+      - type: "defaultValue"
+        value:
+          type: "constant"
+          value:
+            type: "string"
+            value: ""
+    isMultiValued: false
+  - id: "serverCertificateThumbprint"
+    label: "serverCertificateThumbprint"
+    description: "The vRealize Operations Manager server certificate thumbprint."
+    dataType:
+      type: "primitive"
+      typeId: "STRING"
+    state:
+      dependencies: []
+      facets:
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+      - type: "defaultValue"
+        value:
+          type: "constant"
+          value:
+            type: "string"
+            value: ""
+    isMultiValued: false
+  - id: "installer"
+    label: "installer"
+    description: "Name of Windows Installer"
+    dataType:
+      type: "primitive"
+      typeId: "STRING"
+    state:
+      dependencies: []
+      facets:
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+      - type: "defaultValue"
+        value:
+          type: "constant"
+          value:
+            type: "string"
+            value: ""
+    isMultiValued: false
+  - id: "passwordUNC"
+    label: "passwordUNC"
+    description: ""
+    dataType:
+      type: "primitive"
+      typeId: "SECURE_STRING"
+    state:
+      dependencies: []
+      facets:
+      - type: "encrypted"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+      - type: "defaultValue"
+        value:
+          type: "constant"
+          value:
+            type: "secureString"
+            value: ""
+    isMultiValued: false
+  - id: "installerPath"
+    label: "installerPath"
+    description: "Location of the installer aka UNC path"
+    dataType:
+      type: "primitive"
+      typeId: "STRING"
+    state:
+      dependencies: []
+      facets:
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+      - type: "defaultValue"
+        value:
+          type: "constant"
+          value:
+            type: "string"
+            value: ""
+    isMultiValued: false
+  - id: "usernameOps"
+    label: "usernameOps"
+    description: ""
+    dataType:
+      type: "primitive"
+      typeId: "STRING"
+    state:
+      dependencies: []
+      facets:
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+      - type: "defaultValue"
+        value:
+          type: "constant"
+          value:
+            type: "string"
+            value: ""
+    isMultiValued: false
+  - id: "serverAddress"
+    label: "serverAddress"
+    description: "FQDN or IP address of the vRealize Operations Manager server."
+    dataType:
+      type: "primitive"
+      typeId: "STRING"
+    state:
+      dependencies: []
+      facets:
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+      - type: "defaultValue"
+        value:
+          type: "constant"
+          value:
+            type: "string"
+            value: ""
+    isMultiValued: false
+  - id: "host"
+    label: "Container"
+    description: ""
+    dataType:
+      type: "ref"
+      componentTypeId: "com.vmware.csp.iaas.blueprint.service"
+      classId: "Infrastructure.Machine.Schema"
+      label: "Machine"
+    state:
+      dependencies: []
+      facets:
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+      - type: "visible"
+        value:
+          type: "constantClause"
+          value:
+            type: "boolean"
+            value: false
+    isMultiValued: false
+  - id: "usernameUNC"
+    label: "usernameUNC"
+    description: ""
+    dataType:
+      type: "primitive"
+      typeId: "STRING"
+    state:
+      dependencies: []
+      facets:
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+      - type: "defaultValue"
+        value:
+          type: "constant"
+          value:
+            type: "string"
+            value: ""
+    isMultiValued: false
+  - id: "passwordOps"
+    label: "passwordOps"
+    description: ""
+    dataType:
+      type: "primitive"
+      typeId: "SECURE_STRING"
+    state:
+      dependencies: []
+      facets:
+      - type: "encrypted"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+      - type: "defaultValue"
+        value:
+          type: "constant"
+          value:
+            type: "secureString"
+            value: ""
+    isMultiValued: false
+containerFieldId: "host"
+lifecycleTasks:
+- createdDate: "2016-02-24T00:56:12.331Z"
+  lastUpdated: "2016-02-24T02:33:10.606Z"
+  script:
+    scriptContent: "C:\\ep-agent\\unins000.exe /VERYSILENT"
+    isRebootAfter: false
+    scriptTypeId: "cmd"
+  taskDescriptorRef:
+    id: "TEARDOWN"
+    label: "Uninstall"
+- createdDate: "2016-02-17T04:28:09.220Z"
+  lastUpdated: "2016-02-24T02:33:10.607Z"
+  script:
+    scriptContent: "net use %installerPath% %passwordUNC% /user:%usernameUNC%\n%installerPath%\\\
+      %installer% /VERYSILENT -serverAddress %serverAddress% -username %usernameOps%\
+      \ -securePort %securePort% -password %passwordOps% -serverCertificateThumbprint\
+      \ %serverCertificateThumbprint%\ntimeout  300\nnet use %installerPath% /d"
+    isRebootAfter: false
+    scriptTypeId: "cmd"
+  taskDescriptorRef:
+    id: "INSTALL"
+    label: "Install"
